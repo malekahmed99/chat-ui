@@ -1,0 +1,49 @@
+:root {
+  --bg-app: #f7f5f1;
+  --bg-surface: #ffffff;
+  --bg-sidebar: #14171f;
+  --bg-sidebar-hover: #1e222c;
+  --bg-sidebar-active: #262b38;
+  --accent: #2d7d6e;
+  --accent-strong: #225f54;
+  --accent-tint: #e4f0ec;
+  --text-primary: #1a1d1f;
+  --text-secondary: #6b6f76;
+  --text-on-dark: #c9cdd6;
+  --text-on-dark-strong: #ffffff;
+  --text-on-dark-muted: #7d8190;
+  --border: #e6e3dc;
+  --border-dark: #2a2f3b;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg-app);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+textarea,
+input {
+  font-family: inherit;
+}
