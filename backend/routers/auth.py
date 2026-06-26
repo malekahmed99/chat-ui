@@ -12,6 +12,7 @@ import uuid
 from datetime import timedelta
 
 from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -62,8 +63,8 @@ async def register(
 
 @router.post("/login", response_model=TokenOut)
 async def login(
-    body: LoginIn,
-    response: Response,
+    form_data: OAuth2PasswordRequestForm = Depends(),
+    response: Response = None,
     db: AsyncSession = Depends(get_db),
 ) -> dict:
     """
@@ -73,11 +74,11 @@ async def login(
     Returns 401 without specifying which field was wrong (security best practice).
     """
     result = await db.execute(
-        select(User).where(User.identifier == body.identifier)
+        select(User).where(User.identifier == form_data.username)
     )
     user = result.scalar_one_or_none()
 
-    if user is None or not verify_password(body.password, user.password_hash):
+    if user is None or not verify_password(form_data.password, user.password_hash):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid credentials.",

@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     max_new_tokens: int = 2048  # Hard cap on generated tokens per response
     # LLM — system prompt (configurable without code changes)
     llm_system_prompt: str = """
-    
+
         You are a direct, knowledgeable assistant.
         Rules:
         - Answer immediately. Never restate the question or open with filler ("Sure!", "Great question!", "Certainly!").
@@ -37,7 +37,7 @@ class Settings(BaseSettings):
     # Auth / JWT
     secret_key: str
     algorithm: str = "HS256"
-    access_token_expire_minutes: int = 15
+    access_token_expire_minutes: int = 1440
     refresh_token_expire_days: int = 7
 
     # App
