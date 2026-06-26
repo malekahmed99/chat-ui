@@ -3,7 +3,7 @@ import MessageBubble from "./MessageBubble";
 import MessageInput from "./MessageInput";
 import TypingIndicator from "./TypingIndicator";
 
-export default function ChatWindow({ sessionTitle, messages, isSending, onSend, onToggleSidebar }) {
+export default function ChatWindow({ sessionTitle, messages, isSending, onSend, onFeedback, onToggleSidebar }) {
   const bottomRef = useRef(null);
 
   // Auto-scroll to the latest message whenever the conversation changes.
@@ -30,7 +30,7 @@ export default function ChatWindow({ sessionTitle, messages, isSending, onSend, 
           </div>
         )}
         {messages.map((msg, i) => (
-          <MessageBubble key={i} role={msg.role} text={msg.text} />
+          <MessageBubble key={msg.id || i} msg={msg} onFeedback={onFeedback} />
         ))}
         {isSending && <TypingIndicator />}
         <div ref={bottomRef} />

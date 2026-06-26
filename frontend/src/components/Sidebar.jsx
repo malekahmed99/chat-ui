@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Sidebar({
   sessions,
@@ -9,8 +10,8 @@ export default function Sidebar({
   onRename,
   isOpen,
 }) {
+  const { user, signOut } = useAuth();
   // Local state: which session (if any) is currently being renamed.
-  // This only matters to the Sidebar itself, so it doesn't need to live in App.jsx.
   const [editingId, setEditingId] = useState(null);
   const [editValue, setEditValue] = useState("");
 
@@ -88,7 +89,10 @@ export default function Sidebar({
       </nav>
 
       <div className="sidebar-footer">
-        <span className="model-tag">AI model</span>
+        <div className="user-info">
+          <span className="user-identifier">{user?.identifier || "User"}</span>
+        </div>
+        <button className="logout-btn" onClick={signOut}>Logout</button>
       </div>
     </aside>
   );
