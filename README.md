@@ -7,6 +7,8 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react&logoColor=black)](https://reactjs.org)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![llama.cpp](https://img.shields.io/badge/llama.cpp-Python-000000?logo=python&logoColor=white)](https://github.com/abetlen/llama-cpp-python)
+[![Qwen](https://img.shields.io/badge/Qwen-4B_Instruct-4B0082)](https://huggingface.co/Qwen)
 
 </div>
 
