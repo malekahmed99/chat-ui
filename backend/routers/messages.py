@@ -74,9 +74,16 @@ async def send_message(
     )
     db.add(user_msg)
 
-    # 4. Auto-title: set session title from the first 60 chars of the first message
+    # 4. Auto-title: set session title from the first ~40 chars of the first message
     if session.title is None:
-        session.title = body.content[:60]
+        title_raw = body.content[:40]
+        if len(body.content) > 40:
+            last_space = title_raw.rfind(" ")
+            if last_space > 0:
+                title_raw = title_raw[:last_space]
+            session.title = title_raw + "..."
+        else:
+            session.title = title_raw
 
     await db.commit()
     await db.refresh(user_msg)
